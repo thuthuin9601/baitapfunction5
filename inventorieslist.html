@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Product</h2>
+    <p id="name"><br></p>
+    <button type="button" onclick="add(matHang)">Add</button>
+    <button type="button" onclick="edit(matHang)">Edit</button>
+    <button type="button" onclick="del(matHang)">Delete</button>
+</body>
+</html>
+<script>
+    var matHang = [];
+    function display(matHang){
+        let s='';
+        for(let i=0;i<matHang.length;i++){
+        s+=(i+1)+'. '+matHang[i]+'<br>';
+    }
+    return s;
+    }
+    function add(matHang){
+        let newProduct=prompt('please add new product');
+        matHang.push(newProduct);
+        document.getElementById("name").innerHTML = display(matHang);
+    }
+    function edit(matHang){
+        let index=Number(prompt('please insert order of product to be edited'));
+        let newProduct=prompt('please add product to be edited');
+        matHang[index-1]=newProduct;
+        document.getElementById("name").innerHTML = display(matHang);
+    }
+    function del(matHang){
+        let index=Number(prompt('please insert order of product to be deleted'));
+        matHang.splice(index-1,1);
+        document.getElementById("name").innerHTML = display(matHang);
+    }
+    document.getElementById("name").innerHTML = display(matHang);
+</script>
